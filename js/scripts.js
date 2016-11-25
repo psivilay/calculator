@@ -1,28 +1,54 @@
+
+// Business Back-end logic:
+
 var add = function(number1, number2) {
-	return number1 + number2;
+  return number1 + number2;
 };
 
 var subtract = function(number1, number2) {
-	return number1 - number2;
+  return number1 - number2;
 };
 
-// thinking about if else, if number1 is >= number2, then do number1-number2
-
 var multiply = function(number1, number2) {
-	return number1 * number2;
+  return number1 * number2;
 };
 
 var divide = function(number1, number2) {
-	return number1 / number2;
+  return number1 / number2;
 };
 
-// thinking about var whichOperation = prompt("Do you want to multiply") for yes or no true/false return
-// or if have array and can select and type in which operation that will point to corresponding function
+// Everything below this line is user interface front-end logic:
 
-var number1  = parseInt(prompt("Please enter a number:"));
-var number2 = parseInt(prompt("And now please enter another number:"));
-var result = divide(number1, number2)
+$(document).ready(function() {
+	$("form#add").submit(function(event) {
+		event.preventDefault();
+		var number1 = parseInt($("#add1").val());
+	  var number2 = parseInt($("#add2").val());
+	  var result = add(number1, number2);
+		$("#output").text(result);
+	});
 
-alert("The answer is " + result + ".");
+	$("form#subtract").submit(function(event) {
+		event.preventDefault();
+		var number1 = parseInt($("#subtract1").val());
+		var number2 = parseInt($("#subtract2").val());
+		var result = subtract(number1, number2);
+		$("#output").text(result);
+	});
 
-// can change generic to the multiplication of number1 and number2 is, etc.
+	$("form#multiply").submit(function(event) {
+		event.preventDefault();
+		var number1 = parseInt($("#multiply1").val());
+		var number2 = parseInt($("#multiply2").val());
+		var result = multiply(number1, number2);
+		$("#output").text(result);
+	});
+
+	$("form#divide").submit(function(event) {
+		event.preventDefault();
+		var number1 = parseInt($("#divide1").val());
+		var number2 = parseInt($("#divide2").val());
+		var result = divide(number1, number2);
+		$("#output").text(result);
+	});
+});
